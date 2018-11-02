@@ -1,0 +1,25 @@
+buildscript {
+    apply from: 'dependencies.gradle'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath build_plugins.android_gradle
+        classpath build_plugins.kotlin_gradle
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://dl.bintray.com/kodein-framework/Kodein-DI/' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
