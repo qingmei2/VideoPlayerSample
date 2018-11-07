@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import com.aliyun.vodplayer.R;
-
-
+import com.github.qingmei2.R;
 
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.

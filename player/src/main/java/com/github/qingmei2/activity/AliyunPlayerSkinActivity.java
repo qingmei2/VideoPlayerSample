@@ -20,33 +20,28 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import com.alivc.player.VcPlayerLog;
-import com.aliyun.vodplayer.R;
 import com.aliyun.vodplayer.downloader.*;
 import com.aliyun.vodplayer.media.AliyunLocalSource;
 import com.aliyun.vodplayer.media.AliyunVidSts;
 import com.aliyun.vodplayer.media.IAliyunVodPlayer;
-import com.aliyun.vodplayerview.constants.PlayParameter;
-import com.aliyun.vodplayerview.playlist.AlivcPlayListAdapter;
-import com.aliyun.vodplayerview.playlist.AlivcPlayListManager;
-import com.aliyun.vodplayerview.playlist.AlivcVideoInfo;
-import com.aliyun.vodplayerview.utils.Commen;
-import com.aliyun.vodplayerview.utils.ScreenUtils;
-import com.aliyun.vodplayerview.utils.VidStsUtil;
-import com.aliyun.vodplayerview.utils.download.DownloadDBHelper;
-import com.aliyun.vodplayerview.view.choice.AlivcShowMoreDialog;
-import com.aliyun.vodplayerview.view.control.ControlView;
-import com.aliyun.vodplayerview.view.download.*;
-import com.aliyun.vodplayerview.view.download.AlivcDialog.onCancelOnclickListener;
-import com.aliyun.vodplayerview.view.download.AlivcDialog.onConfirmClickListener;
-import com.aliyun.vodplayerview.view.download.DownloadView.OnDownloadViewListener;
-import com.aliyun.vodplayerview.view.more.AliyunShowMoreValue;
-import com.aliyun.vodplayerview.view.more.ShowMoreView;
-import com.aliyun.vodplayerview.view.more.SpeedValue;
-import com.aliyun.vodplayerview.view.tipsview.ErrorInfo;
-import com.aliyun.vodplayerview.widget.AliyunScreenMode;
-import com.aliyun.vodplayerview.widget.AliyunVodPlayerView;
-import com.aliyun.vodplayerview.widget.AliyunVodPlayerView.OnPlayerViewClickListener;
-import com.aliyun.vodplayerview.widget.AliyunVodPlayerView.PlayViewType;
+import com.github.qingmei2.R;
+import com.github.qingmei2.constants.PlayParameter;
+import com.github.qingmei2.playlist.AlivcPlayListAdapter;
+import com.github.qingmei2.playlist.AlivcPlayListManager;
+import com.github.qingmei2.playlist.AlivcVideoInfo;
+import com.github.qingmei2.utils.Commen;
+import com.github.qingmei2.utils.ScreenUtils;
+import com.github.qingmei2.utils.VidStsUtil;
+import com.github.qingmei2.utils.download.DownloadDBHelper;
+import com.github.qingmei2.view.choice.AlivcShowMoreDialog;
+import com.github.qingmei2.view.control.ControlView;
+import com.github.qingmei2.view.download.*;
+import com.github.qingmei2.view.more.AliyunShowMoreValue;
+import com.github.qingmei2.view.more.ShowMoreView;
+import com.github.qingmei2.view.more.SpeedValue;
+import com.github.qingmei2.view.tipsview.ErrorInfo;
+import com.github.qingmei2.widget.AliyunScreenMode;
+import com.github.qingmei2.widget.AliyunVodPlayerView;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -448,7 +443,7 @@ public class AliyunPlayerSkinActivity extends BaseActivity {
     private void downloadViewSetting(final DownloadView downloadView) {
         downloadView.addAllDownloadMediaInfo(downloadDataProvider.getAllDownloadMediaInfo());
 
-        downloadView.setOnDownloadViewListener(new OnDownloadViewListener() {
+        downloadView.setOnDownloadViewListener(new DownloadView.OnDownloadViewListener() {
             @Override
             public void onStop(AliyunDownloadMediaInfo downloadMediaInfo) {
                 downloadManager.stopDownloadMedia(downloadMediaInfo);
@@ -466,7 +461,7 @@ public class AliyunPlayerSkinActivity extends BaseActivity {
                 alivcDialog.setDialogIcon(R.drawable.icon_delete_tips);
                 alivcDialog.setMessage(getResources().getString(R.string.alivc_delete_confirm));
                 alivcDialog.setOnConfirmclickListener(getResources().getString(R.string.alivc_dialog_sure),
-                    new onConfirmClickListener() {
+                    new AlivcDialog.onConfirmClickListener() {
                         @Override
                         public void onConfirm() {
                             alivcDialog.dismiss();
@@ -484,7 +479,7 @@ public class AliyunPlayerSkinActivity extends BaseActivity {
                         }
                     });
                 alivcDialog.setOnCancelOnclickListener(getResources().getString(R.string.alivc_dialog_cancle),
-                    new onCancelOnclickListener() {
+                    new AlivcDialog.onCancelOnclickListener() {
                         @Override
                         public void onCancel() {
                             alivcDialog.dismiss();
@@ -677,11 +672,11 @@ public class AliyunPlayerSkinActivity extends BaseActivity {
         }
     }
 
-    private class MyPlayViewClickListener implements OnPlayerViewClickListener {
+    private class MyPlayViewClickListener implements AliyunVodPlayerView.OnPlayerViewClickListener {
         @Override
-        public void onClick(AliyunScreenMode screenMode, PlayViewType viewType) {
+        public void onClick(AliyunScreenMode screenMode, AliyunVodPlayerView.PlayViewType viewType) {
             // 如果当前的Type是Download, 就显示Download对话框
-            if (viewType == PlayViewType.Download) {
+            if (viewType == AliyunVodPlayerView.PlayViewType.Download) {
                 showAddDownloadView(screenMode);
             }
         }

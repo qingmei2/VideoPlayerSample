@@ -13,8 +13,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.*;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.utils.ScreenUtils;
+import com.github.qingmei2.R;
+import com.github.qingmei2.utils.ScreenUtils;
+
 
 import java.util.ArrayList;
 import java.util.List;

@@ -19,25 +19,23 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.alivc.player.AliyunErrorCode;
 import com.alivc.player.VcPlayerLog;
-import com.aliyun.vodplayer.R;
 import com.aliyun.vodplayer.media.*;
-import com.aliyun.vodplayer.media.IAliyunVodPlayer.PlayerState;
-import com.aliyun.vodplayerview.constants.PlayParameter;
-import com.aliyun.vodplayerview.theme.ITheme;
-import com.aliyun.vodplayerview.utils.ImageLoader;
-import com.aliyun.vodplayerview.utils.NetWatchdog;
-import com.aliyun.vodplayerview.utils.OrientationWatchDog;
-import com.aliyun.vodplayerview.utils.ScreenUtils;
-import com.aliyun.vodplayerview.view.control.ControlView;
-import com.aliyun.vodplayerview.view.control.ControlView.OnDownloadClickListener;
-import com.aliyun.vodplayerview.view.gesture.GestureDialogManager;
-import com.aliyun.vodplayerview.view.gesture.GestureView;
-import com.aliyun.vodplayerview.view.guide.GuideView;
-import com.aliyun.vodplayerview.view.interfaces.ViewAction;
-import com.aliyun.vodplayerview.view.more.SpeedValue;
-import com.aliyun.vodplayerview.view.quality.QualityView;
-import com.aliyun.vodplayerview.view.speed.SpeedView;
-import com.aliyun.vodplayerview.view.tipsview.TipsView;
+import com.github.qingmei2.R;
+import com.github.qingmei2.constants.PlayParameter;
+import com.github.qingmei2.theme.ITheme;
+import com.github.qingmei2.utils.ImageLoader;
+import com.github.qingmei2.utils.NetWatchdog;
+import com.github.qingmei2.utils.OrientationWatchDog;
+import com.github.qingmei2.utils.ScreenUtils;
+import com.github.qingmei2.view.control.ControlView;
+import com.github.qingmei2.view.gesture.GestureDialogManager;
+import com.github.qingmei2.view.gesture.GestureView;
+import com.github.qingmei2.view.guide.GuideView;
+import com.github.qingmei2.view.interfaces.ViewAction;
+import com.github.qingmei2.view.more.SpeedValue;
+import com.github.qingmei2.view.quality.QualityView;
+import com.github.qingmei2.view.speed.SpeedView;
+import com.github.qingmei2.view.tipsview.TipsView;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -93,7 +91,7 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
     //播放是否完成
     private boolean isCompleted = false;
     //用来记录前后台切换时的状态，以供恢复。
-    private PlayerState mPlayerState;
+    private IAliyunVodPlayer.PlayerState mPlayerState;
     //媒体信息
     private AliyunMediaInfo mAliyunMediaInfo;
     //整体缓冲进度
@@ -478,8 +476,8 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                 VcPlayerLog.d(TAG, "playerState = " + mAliyunVodPlayer.getPlayerState());
                 //继续播放。如果没有prepare或者stop了，需要重新prepare
                 mTipsView.hideAll();
-                if (mAliyunVodPlayer.getPlayerState() == PlayerState.Idle ||
-                    mAliyunVodPlayer.getPlayerState() == PlayerState.Stopped) {
+                if (mAliyunVodPlayer.getPlayerState() == IAliyunVodPlayer.PlayerState.Idle ||
+                    mAliyunVodPlayer.getPlayerState() == IAliyunVodPlayer.PlayerState.Stopped) {
                     if (mAliyunPlayAuth != null) {
                         prepareAuth(mAliyunPlayAuth);
                     } else if (mAliyunVidSts != null) {
@@ -669,7 +667,7 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                 mSpeedView.show(mCurrentScreenMode);
             }
         });
-        mControlView.setOnDownloadClickListener(new OnDownloadClickListener() {
+        mControlView.setOnDownloadClickListener(new ControlView.OnDownloadClickListener() {
             @Override
             public void onDownloadClick() {
                 //点击下载之后弹出不同清晰度选择下载dialog
@@ -845,10 +843,10 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
      * 切换播放状态。点播播放按钮之后的操作
      */
     private void switchPlayerState() {
-        PlayerState playerState = mAliyunVodPlayer.getPlayerState();
-        if (playerState == PlayerState.Started) {
+        IAliyunVodPlayer.PlayerState playerState = mAliyunVodPlayer.getPlayerState();
+        if (playerState == IAliyunVodPlayer.PlayerState.Started) {
             pause();
-        } else if (playerState == PlayerState.Paused || playerState == PlayerState.Prepared) {
+        } else if (playerState == IAliyunVodPlayer.PlayerState.Paused || playerState == IAliyunVodPlayer.PlayerState.Prepared) {
             start();
         }
         if (onPlayStateBtnClickListener != null) {
@@ -874,9 +872,9 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
                 long position = mAliyunVodPlayer.getCurrentPosition();
                 long deltaPosition = 0;
 
-                if (mAliyunVodPlayer.getPlayerState() == PlayerState.Prepared ||
-                    mAliyunVodPlayer.getPlayerState() == PlayerState.Paused ||
-                    mAliyunVodPlayer.getPlayerState() == PlayerState.Started) {
+                if (mAliyunVodPlayer.getPlayerState() == IAliyunVodPlayer.PlayerState.Prepared ||
+                    mAliyunVodPlayer.getPlayerState() == IAliyunVodPlayer.PlayerState.Paused ||
+                    mAliyunVodPlayer.getPlayerState() == IAliyunVodPlayer.PlayerState.Started) {
                     //在播放时才能调整大小
                     deltaPosition = (long)(nowX - downX) * duration / getWidth();
                 }
@@ -1920,9 +1918,9 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
         if (mAliyunVodPlayer == null) {
             return;
         }
-        if (mPlayerState == PlayerState.Paused) {
+        if (mPlayerState == IAliyunVodPlayer.PlayerState.Paused) {
             pause();
-        } else if (mPlayerState == PlayerState.Started) {
+        } else if (mPlayerState == IAliyunVodPlayer.PlayerState.Started) {
             if (isLocalSource()) {
                 reTry();
             } else {
@@ -2006,7 +2004,7 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
      *
      * @return 播放器状态
      */
-    public PlayerState getPlayerState() {
+    public IAliyunVodPlayer.PlayerState getPlayerState() {
         if (mAliyunVodPlayer != null) {
             return mAliyunVodPlayer.getPlayerState();
         }
@@ -2030,8 +2028,8 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
             return;
         }
 
-        PlayerState playerState = mAliyunVodPlayer.getPlayerState();
-        if (playerState == PlayerState.Paused || playerState == PlayerState.Prepared || mAliyunVodPlayer.isPlaying()) {
+        IAliyunVodPlayer.PlayerState playerState = mAliyunVodPlayer.getPlayerState();
+        if (playerState == IAliyunVodPlayer.PlayerState.Paused || playerState == IAliyunVodPlayer.PlayerState.Prepared || mAliyunVodPlayer.isPlaying()) {
             mAliyunVodPlayer.start();
         }
 
@@ -2049,8 +2047,8 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
             return;
         }
 
-        PlayerState playerState = mAliyunVodPlayer.getPlayerState();
-        if (playerState == PlayerState.Started || mAliyunVodPlayer.isPlaying()) {
+        IAliyunVodPlayer.PlayerState playerState = mAliyunVodPlayer.getPlayerState();
+        if (playerState == IAliyunVodPlayer.PlayerState.Started || mAliyunVodPlayer.isPlaying()) {
             mAliyunVodPlayer.pause();
         }
     }
@@ -2261,7 +2259,7 @@ public class AliyunVodPlayerView extends RelativeLayout implements ITheme {
      * 播放按钮点击listener
      */
     public interface OnPlayStateBtnClickListener {
-        void onPlayBtnClick(PlayerState playerState);
+        void onPlayBtnClick(IAliyunVodPlayer.PlayerState playerState);
     }
 
     /**

@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.theme.ITheme;
-import com.aliyun.vodplayerview.widget.AliyunScreenMode;
-import com.aliyun.vodplayerview.widget.AliyunVodPlayerView;
+import com.github.qingmei2.R;
+import com.github.qingmei2.theme.ITheme;
+import com.github.qingmei2.widget.AliyunScreenMode;
+import com.github.qingmei2.widget.AliyunVodPlayerView;
 
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.

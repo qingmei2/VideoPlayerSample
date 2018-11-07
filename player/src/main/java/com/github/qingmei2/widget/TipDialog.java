@@ -13,8 +13,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.utils.DensityUtil;
+import com.github.qingmei2.R;
+import com.github.qingmei2.utils.DensityUtil;
 
 public class TipDialog extends Dialog {
     public TipDialog(@NonNull Context context) {

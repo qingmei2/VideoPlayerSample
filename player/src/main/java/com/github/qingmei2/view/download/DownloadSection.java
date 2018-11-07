@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.RelativeLayout.LayoutParams;
-import com.aliyun.vodplayer.R;
 import com.aliyun.vodplayer.downloader.AliyunDownloadMediaInfo;
-import com.aliyun.vodplayer.downloader.AliyunDownloadMediaInfo.Status;
-import com.aliyun.vodplayerview.view.sectionlist.SectionParameters;
-import com.aliyun.vodplayerview.view.sectionlist.StatelessSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.github.qingmei2.R;
+import com.github.qingmei2.view.sectionlist.SectionParameters;
+import com.github.qingmei2.view.sectionlist.StatelessSection;
+import com.qingmei2.rhine.image.GlideApp;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -65,36 +65,34 @@ public class DownloadSection extends StatelessSection {
     public void onBindItemViewHolder(ViewHolder holder, int position) {
         final DownloadInfoItemViewHolder itemViewHolder = (DownloadInfoItemViewHolder) holder;
         AliyunDownloadMediaInfo mediaInfo = alivcDownloadMediaInfos.get(position).getAliyunDownloadMediaInfo();
-        Glide.with(this.context.get())
+        GlideApp.with(this.context.get())
             .load(mediaInfo.getCoverUrl())
             .centerCrop()
-            .diskCacheStrategy(DiskCacheStrategy.SOURCE)
             .placeholder(R.color.alivc_color_player_colorAccent)
-            .crossFade()
             .into(itemViewHolder.ivVideoCover);
         //(new ImageLoader(itemViewHolder.ivVideoCover)).loadAsync(coverUrl);
         itemViewHolder.tvVideoTitle.setText(mediaInfo.getTitle());
 
         itemViewHolder.cbSelect.setVisibility(alivcDownloadMediaInfos.get(position).isEditState()?View.VISIBLE:View.GONE);
         itemViewHolder.cbSelect.setChecked(alivcDownloadMediaInfos.get(position).isCheckedState());
-        Status status = mediaInfo.getStatus();
-        if (status == Status.Prepare) {
+        AliyunDownloadMediaInfo.Status status = mediaInfo.getStatus();
+        if (status == AliyunDownloadMediaInfo.Status.Prepare) {
             //prepare
             itemViewHolder.tvDownloadVideoStats.setText(context.get().getResources().getString(R.string.download_prepare));
-        } else if (status == Status.Wait) {
+        } else if (status == AliyunDownloadMediaInfo.Status.Wait) {
             //wait
             itemViewHolder.tvDownloadVideoStats.setText(context.get().getResources().getString(R.string.download_wait));
-        } else if (status == Status.Start) {
+        } else if (status == AliyunDownloadMediaInfo.Status.Start) {
             //start
             itemViewHolder.tvDownloadVideoStats.setText(context.get().getResources().getString(R.string.download_downloading));
             itemViewHolder.ivVideoState.setBackgroundResource(R.drawable.alivc_download_pause);
             itemViewHolder.ivVideoState.setVisibility(View.VISIBLE);
-        } else if (status == Status.Stop) {
+        } else if (status == AliyunDownloadMediaInfo.Status.Stop) {
             //stop
             itemViewHolder.tvDownloadVideoStats.setText(context.get().getResources().getString(R.string.download_pause));
             itemViewHolder.ivVideoState.setBackgroundResource(R.drawable.alivc_download_downloading);
             itemViewHolder.ivVideoState.setVisibility(View.VISIBLE);
-        } else if (status == Status.Complete){
+        } else if (status == AliyunDownloadMediaInfo.Status.Complete){
             //complete
             itemViewHolder.tvDownloadVideoStats.setVisibility(View.GONE);
             itemViewHolder.ivVideoState.setVisibility(View.GONE);
@@ -102,7 +100,7 @@ public class DownloadSection extends StatelessSection {
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
             itemViewHolder.tvDownloadVideoTotalSize.setLayoutParams(lp);
-        } else if (status == Status.Error) {
+        } else if (status == AliyunDownloadMediaInfo.Status.Error) {
             // error
             itemViewHolder.tvDownloadVideoStats.setText(context.get().getResources().getString(R.string.download_error));
             itemViewHolder.ivVideoState.setVisibility(View.VISIBLE);

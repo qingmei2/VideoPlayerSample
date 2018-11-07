@@ -1,7 +1,6 @@
 package com.github.qingmei2.playlist;
 
-
-import com.aliyun.vodplayerview.playlist.vod.core.AliyunVodParam;
+import com.github.qingmei2.playlist.vod.core.AliyunVodParam;
 import com.google.gson.Gson;
 import okhttp3.*;
 

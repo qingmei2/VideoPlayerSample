@@ -2,9 +2,9 @@ package com.github.qingmei2.view.gesture;
 
 import android.app.Activity;
 import android.view.View;
-import com.aliyun.vodplayerview.view.gesturedialog.BrightnessDialog;
-import com.aliyun.vodplayerview.view.gesturedialog.SeekDialog;
-import com.aliyun.vodplayerview.view.gesturedialog.VolumeDialog;
+import com.github.qingmei2.view.gesturedialog.BrightnessDialog;
+import com.github.qingmei2.view.gesturedialog.SeekDialog;
+import com.github.qingmei2.view.gesturedialog.VolumeDialog;
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.
  */

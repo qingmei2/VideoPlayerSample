@@ -3,8 +3,7 @@ package com.github.qingmei2.view.download;
 import android.content.Context;
 import com.aliyun.vodplayer.downloader.AliyunDownloadManager;
 import com.aliyun.vodplayer.downloader.AliyunDownloadMediaInfo;
-import com.aliyun.vodplayer.downloader.AliyunDownloadMediaInfo.Status;
-import com.aliyun.vodplayerview.utils.DownloadSaveInfoUtil;
+import com.github.qingmei2.utils.DownloadSaveInfoUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.*;
@@ -51,7 +50,7 @@ public class DownloadDataProvider {
         }
 
         for (AliyunDownloadMediaInfo info :aliyunDownloadMediaInfos){
-            if (info.getStatus() != Status.Complete){
+            if (info.getStatus() != AliyunDownloadMediaInfo.Status.Complete){
                 downloadManager.addDownloadMedia(info);
             }
         }

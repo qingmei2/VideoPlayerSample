@@ -10,9 +10,8 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.utils.DensityUtil;
-
+import com.github.qingmei2.R;
+import com.github.qingmei2.utils.DensityUtil;
 
 public class QMUILoadingView extends View {
 

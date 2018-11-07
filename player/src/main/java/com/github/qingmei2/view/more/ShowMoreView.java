@@ -7,8 +7,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.activity.AliyunPlayerSkinActivity;
+import com.github.qingmei2.R;
+import com.github.qingmei2.activity.AliyunPlayerSkinActivity;
 
 public class ShowMoreView extends LinearLayout implements View.OnClickListener,RadioGroup.OnCheckedChangeListener {
 

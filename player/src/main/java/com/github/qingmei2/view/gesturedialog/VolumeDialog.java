@@ -2,7 +2,7 @@ package com.github.qingmei2.view.gesturedialog;
 
 import android.app.Activity;
 import com.alivc.player.VcPlayerLog;
-import com.aliyun.vodplayer.R;
+import com.github.qingmei2.R;
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.
  */

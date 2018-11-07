@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.Window;
 import android.view.WindowManager;
 import com.alivc.player.VcPlayerLog;
-import com.aliyun.vodplayer.R;
+import com.github.qingmei2.R;
 
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.

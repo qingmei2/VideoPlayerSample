@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.constants.PlayParameter;
-import com.aliyun.vodplayerview.utils.VidStsUtil;
+import com.github.qingmei2.R;
+import com.github.qingmei2.constants.PlayParameter;
+import com.github.qingmei2.utils.VidStsUtil;
 
 import java.lang.ref.WeakReference;
 

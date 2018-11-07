@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.aliyun.vodplayerview.view.sectionlist.Section.State;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -870,39 +869,39 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     }
 
     /**
-     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link State}
+     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link Section.State}
      * view holder in the adapter. Useful to be called after changing the State from
      * LOADING/FAILED/EMPTY to LOADING/FAILED/EMPTY.
      *
      * @param tag           unique identifier of the section
      * @param previousState previous state of section
      */
-    public void notifyNotLoadedStateChanged(String tag, State previousState) {
+    public void notifyNotLoadedStateChanged(String tag, Section.State previousState) {
         Section section = getValidSectionOrThrowException(tag);
 
         notifyNotLoadedStateChanged(section, previousState);
     }
 
     /**
-     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link State}
+     * Helper method that calls {@link #notifyItemChanged} with the position of the {@link Section.State}
      * view holder in the adapter. Useful to be called after changing the State from
      * LOADING/ FAILED/ EMPTY to LOADING/ FAILED/ EMPTY.
      *
      * @param section       a visible section of this adapter
      * @param previousState previous state of section
      */
-    public void notifyNotLoadedStateChanged(Section section, State previousState) {
-        State state = section.getState();
+    public void notifyNotLoadedStateChanged(Section section, Section.State previousState) {
+        Section.State state = section.getState();
 
         if (state == previousState) {
             throw new IllegalStateException("No state changed");
         }
 
-        if (previousState == State.LOADED) {
+        if (previousState == Section.State.LOADED) {
             throw new IllegalStateException("Use notifyStateChangedFromLoaded");
         }
 
-        if (state == State.LOADED) {
+        if (state == Section.State.LOADED) {
             throw new IllegalStateException("Use notifyStateChangedToLoaded");
         }
 
@@ -911,13 +910,13 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     /**
      * Helper method that calls {@link #notifyItemChanged} and {@link #notifyItemInserted} with
-     * the position of the {@link State} view holder in the adapter. Useful to be called after
+     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
      * changing the State from LOADING/ FAILED/ EMPTY to LOADED.
      *
      * @param tag           unique identifier of the section
      * @param previousState previous state of section
      */
-    public void notifyStateChangedToLoaded(String tag, State previousState) {
+    public void notifyStateChangedToLoaded(String tag,  Section.State previousState) {
         Section section = getValidSectionOrThrowException(tag);
 
         notifyStateChangedToLoaded(section, previousState);
@@ -925,21 +924,21 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     /**
      * Helper method that calls {@link #notifyItemChanged} and {@link #notifyItemInserted} with
-     * the position of the {@link State} view holder in the adapter. Useful to be called after
+     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
      * changing the State from LOADING/ FAILED/ EMPTY to LOADED.
      *
      * @param section       a visible section of this adapter
      * @param previousState previous state of section
      */
-    public void notifyStateChangedToLoaded(Section section, State previousState) {
-        State state = section.getState();
+    public void notifyStateChangedToLoaded(Section section,  Section.State previousState) {
+        Section.State state = section.getState();
 
         if (state == previousState) {
             throw new IllegalStateException("No state changed");
         }
 
-        if (state != State.LOADED) {
-            if (previousState == State.LOADED) {
+        if (state !=  Section.State.LOADED) {
+            if (previousState ==  Section.State.LOADED) {
                 throw new IllegalStateException("Use notifyStateChangedFromLoaded");
             } else {
                 throw new IllegalStateException("Use notifyNotLoadedStateChanged");
@@ -961,7 +960,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     /**
      * Helper method that calls {@link #notifyItemRangeRemoved} and {@link #notifyItemChanged} with
-     * the position of the {@link State} view holder in the adapter. Useful to be called after
+     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
      * changing the State from LOADED to LOADING/ FAILED/ EMPTY.
      *
      * @param tag                       unique identifier of the section
@@ -975,16 +974,16 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     /**
      * Helper method that calls {@link #notifyItemRangeRemoved} and {@link #notifyItemChanged} with
-     * the position of the {@link State} view holder in the adapter. Useful to be called after
+     * the position of the {@link Section.State} view holder in the adapter. Useful to be called after
      * changing the State from LOADED to LOADING/ FAILED/ EMPTY.
      *
      * @param section                   a visible section of this adapter
      * @param previousContentItemsCount previous content items count of section
      */
     public void notifyStateChangedFromLoaded(Section section, int previousContentItemsCount) {
-        State state = section.getState();
+        Section.State state = section.getState();
 
-        if (state == State.LOADED) {
+        if (state ==  Section.State.LOADED) {
             throw new IllegalStateException("Use notifyStateChangedToLoaded");
         }
 

@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.aliyun.vodplayer.R;
+import com.github.qingmei2.R;
 
 /**
  * 离线视频tab, 编辑 --> 删除dialog

@@ -12,10 +12,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.aliyun.vodplayer.R;
 import com.aliyun.vodplayer.media.IAliyunVodPlayer;
-import com.aliyun.vodplayerview.theme.ITheme;
-import com.aliyun.vodplayerview.widget.AliyunVodPlayerView;
+import com.github.qingmei2.R;
+import com.github.qingmei2.theme.ITheme;
+import com.github.qingmei2.widget.AliyunVodPlayerView;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -2,9 +2,9 @@ package com.github.qingmei2.utils;
 
 import android.os.AsyncTask;
 import com.alivc.player.VcPlayerLog;
-import com.aliyun.vodplayer.BuildConfig;
 import com.aliyun.vodplayer.media.AliyunVidSts;
 import com.aliyun.vodplayer.utils.HttpClientUtil;
+import com.github.qingmei2.BuildConfig;
 import org.json.JSONObject;
 
 /**

@@ -6,7 +6,7 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.aliyun.vodplayerview.utils.ScreenUtils;
+import com.github.qingmei2.utils.ScreenUtils;
 
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.

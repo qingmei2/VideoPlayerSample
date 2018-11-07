@@ -11,11 +11,11 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.alivc.player.VcPlayerLog;
-import com.aliyun.vodplayer.R;
 import com.aliyun.vodplayer.media.IAliyunVodPlayer;
-import com.aliyun.vodplayerview.theme.ITheme;
-import com.aliyun.vodplayerview.widget.AliyunScreenMode;
-import com.aliyun.vodplayerview.widget.AliyunVodPlayerView;
+import com.github.qingmei2.R;
+import com.github.qingmei2.theme.ITheme;
+import com.github.qingmei2.widget.AliyunScreenMode;
+import com.github.qingmei2.widget.AliyunVodPlayerView;
 
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.

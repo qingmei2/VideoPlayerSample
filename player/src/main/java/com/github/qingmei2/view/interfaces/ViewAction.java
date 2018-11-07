@@ -1,10 +1,10 @@
 package com.github.qingmei2.view.interfaces;
 
-import com.aliyun.vodplayerview.widget.AliyunScreenMode;
-
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.
  */
+
+import com.github.qingmei2.widget.AliyunScreenMode;
 
 /**
  * 定义UI界面通用的操作。

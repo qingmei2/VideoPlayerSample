@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.*;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.utils.ScreenUtils;
-import com.aliyun.vodplayerview.widget.AliyunScreenMode;
+import com.github.qingmei2.R;
+import com.github.qingmei2.utils.ScreenUtils;
+import com.github.qingmei2.widget.AliyunScreenMode;
 
 import java.lang.ref.WeakReference;
 

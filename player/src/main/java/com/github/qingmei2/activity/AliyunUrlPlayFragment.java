@@ -17,9 +17,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.aliyun.vodplayer.R;
-import com.aliyun.vodplayerview.constants.PlayParameter;
-import com.google.zxing.activity.CaptureActivity;
+import com.github.qingmei2.R;
+import com.github.qingmei2.constants.PlayParameter;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -92,8 +91,8 @@ public class AliyunUrlPlayFragment extends Fragment implements OnClickListener {
      * Jump to CaptureActivity and pass some parameters,  set requestCode to receive the returned data
      */
     private void startCaptureActivityForResult() {
-        Intent intent = new Intent(AliyunUrlPlayFragment.this.getActivity(), CaptureActivity.class);
-        Bundle bundle = new Bundle();
+//        Intent intent = new Intent(AliyunUrlPlayFragment.this.getActivity(), CaptureActivity.class);
+//        Bundle bundle = new Bundle();
 //        bundle.putBoolean(CaptureActivity.KEY_NEED_BEEP, CaptureActivity.VALUE_BEEP);
 //        bundle.putBoolean(CaptureActivity.KEY_NEED_VIBRATION, CaptureActivity.VALUE_VIBRATION);
 //        bundle.putBoolean(CaptureActivity.KEY_NEED_EXPOSURE, CaptureActivity.VALUE_NO_EXPOSURE);
@@ -102,7 +101,7 @@ public class AliyunUrlPlayFragment extends Fragment implements OnClickListener {
 //        bundle.putBoolean(CaptureActivity.KEY_SCAN_AREA_FULL_SCREEN, CaptureActivity.VALUE_SCAN_AREA_FULL_SCREEN);
 //        bundle.putBoolean(CaptureActivity.KEY_NEED_SCAN_HINT_TEXT, CaptureActivity.VALUE_SCAN_HINT_TEXT);
 //        intent.putExtra(CaptureActivity.EXTRA_SETTING_BUNDLE, bundle);
-        startActivityForResult(intent, CaptureActivity.REQ_CODE);
+//        startActivityForResult(intent, CaptureActivity.REQ_CODE);
     }
 
     @Override
@@ -127,25 +126,25 @@ public class AliyunUrlPlayFragment extends Fragment implements OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case CaptureActivity.REQ_CODE:
-                switch (resultCode) {
-                    case RESULT_OK:
-                            //or do sth
-                            etPlayUrl.setText(data.getStringExtra(CaptureActivity.INTENT_EXTRA_KEY_QR_SCAN));
-                        break;
-                    case RESULT_CANCELED:
-                        if (data != null) {
-                            // for some reason camera is not working correctly
-                            etPlayUrl.setText(data.getStringExtra(CaptureActivity.INTENT_EXTRA_KEY_QR_SCAN));
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            default:
-                break;
-        }
+//        switch (requestCode) {
+//            case CaptureActivity.REQ_CODE:
+//                switch (resultCode) {
+//                    case RESULT_OK:
+//                            //or do sth
+//                            etPlayUrl.setText(data.getStringExtra(CaptureActivity.INTENT_EXTRA_KEY_QR_SCAN));
+//                        break;
+//                    case RESULT_CANCELED:
+//                        if (data != null) {
+//                            // for some reason camera is not working correctly
+//                            etPlayUrl.setText(data.getStringExtra(CaptureActivity.INTENT_EXTRA_KEY_QR_SCAN));
+//                        }
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            default:
+//                break;
+//        }
     }
 
     public void setOnNotifyActivityListener(OnNotifyActivityListener listener) {

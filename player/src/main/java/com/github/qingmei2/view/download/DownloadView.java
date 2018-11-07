@@ -10,19 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
-import com.aliyun.vodplayer.R;
 import com.aliyun.vodplayer.downloader.AliyunDownloadMediaInfo;
-import com.aliyun.vodplayer.downloader.AliyunDownloadMediaInfo.Status;
-import com.aliyun.vodplayerview.view.download.DownloadSection.OnSectionItemClickListener;
-import com.aliyun.vodplayerview.view.sectionlist.SectionedRecyclerViewAdapter;
+import com.github.qingmei2.R;
+import com.github.qingmei2.view.sectionlist.SectionedRecyclerViewAdapter;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.aliyun.vodplayerview.view.download.DownloadSection.DOWNLOADED_TAG;
-import static com.aliyun.vodplayerview.view.download.DownloadSection.DOWNLOADING_TAG;
+import static com.github.qingmei2.view.download.DownloadSection.DOWNLOADED_TAG;
+import static com.github.qingmei2.view.download.DownloadSection.DOWNLOADING_TAG;
 
 /**
  * 离线下载的界面 该界面中包含下载列表, 列表的item编辑(全选, 删除),  Empty空数据显示等操作
@@ -206,10 +204,10 @@ public class DownloadView extends FrameLayout implements OnClickListener, Compou
         //});
 
         for (AliyunDownloadMediaInfo downloadMediaInfo : alldownloadMediaInfos) {
-            String tag = downloadMediaInfo.getStatus() == Status.Complete ? DOWNLOADED_TAG : DOWNLOADING_TAG;
-            String title = downloadMediaInfo.getStatus() == Status.Complete ? getResources().getString(
+            String tag = downloadMediaInfo.getStatus() == AliyunDownloadMediaInfo.Status.Complete ? DOWNLOADED_TAG : DOWNLOADING_TAG;
+            String title = downloadMediaInfo.getStatus() == AliyunDownloadMediaInfo.Status.Complete ? getResources().getString(
                 R.string.already_downloaded) : getResources().getString(R.string.download_caching);
-            if (downloadMediaInfo.getStatus() == Status.Complete) {
+            if (downloadMediaInfo.getStatus() == AliyunDownloadMediaInfo.Status.Complete) {
                 AlivcDownloadMediaInfo alivcDownloadMediaInfo = new AlivcDownloadMediaInfo();
                 alivcDownloadMediaInfo.setAliyunDownloadMediaInfo(downloadMediaInfo);
                 alivcDownloadMediaInfos.add(0, alivcDownloadMediaInfo);
@@ -237,11 +235,11 @@ public class DownloadView extends FrameLayout implements OnClickListener, Compou
         if (hasAdded(downloadMedia)) {
             return;
         }
-        String tag = downloadMedia.getStatus() == Status.Complete ? DOWNLOADED_TAG : DOWNLOADING_TAG;
-        String title = downloadMedia.getStatus() == Status.Complete ? getResources().getString(
+        String tag = downloadMedia.getStatus() == AliyunDownloadMediaInfo.Status.Complete ? DOWNLOADED_TAG : DOWNLOADING_TAG;
+        String title = downloadMedia.getStatus() == AliyunDownloadMediaInfo.Status.Complete ? getResources().getString(
             R.string.already_downloaded) : getResources().getString(R.string.download_caching);
 
-        if (downloadMedia.getStatus() == Status.Complete) {
+        if (downloadMedia.getStatus() == AliyunDownloadMediaInfo.Status.Complete) {
             AlivcDownloadMediaInfo alivcDownloadMediaInfo = new AlivcDownloadMediaInfo();
             alivcDownloadMediaInfo.setAliyunDownloadMediaInfo(downloadMedia);
             alivcDownloadMediaInfos.add(0, alivcDownloadMediaInfo);
@@ -263,7 +261,7 @@ public class DownloadView extends FrameLayout implements OnClickListener, Compou
         if (sectionAdapter.getSection(tag) == null) {
             section = new DownloadSection(this.context.get(), tag, title,
                 alivcDownloadMediaInfos);
-            section.setOnSectionItemClickListener(new OnSectionItemClickListener() {
+            section.setOnSectionItemClickListener(new DownloadSection.OnSectionItemClickListener() {
                 @Override
                 public void onItemClick(int posion, String tag) {
                     int positionInSection = sectionAdapter.getPositionInSection(posion);
@@ -288,14 +286,14 @@ public class DownloadView extends FrameLayout implements OnClickListener, Compou
                     if (tag.equals(DOWNLOADING_TAG)) {
                         AliyunDownloadMediaInfo aliyunDownloadMediaInfo = alivcDownloadingMediaInfos.get(
                             positionInSection).getAliyunDownloadMediaInfo();
-                        if (aliyunDownloadMediaInfo.getStatus() == Status.Start) {
+                        if (aliyunDownloadMediaInfo.getStatus() == AliyunDownloadMediaInfo.Status.Start) {
                             if (onDownloadViewListener != null) {
                                 //aliyunDownloadMediaInfo.setStatus(Status.Stop);
                                 onDownloadViewListener.onStop(aliyunDownloadMediaInfo);
                                 sectionAdapter.notifyItemChangedInSection(tag, positionInSection);
                             }
-                        } else if (aliyunDownloadMediaInfo.getStatus() == Status.Stop) {
-                            if (aliyunDownloadMediaInfo.getStatus() != Status.Complete) {
+                        } else if (aliyunDownloadMediaInfo.getStatus() == AliyunDownloadMediaInfo.Status.Stop) {
+                            if (aliyunDownloadMediaInfo.getStatus() != AliyunDownloadMediaInfo.Status.Complete) {
                                 //aliyunDownloadMediaInfo.setStatus(Status.Start);
                                 onDownloadViewListener.onStart(aliyunDownloadMediaInfo);
                                 sectionAdapter.notifyItemChangedInSection(tag, positionInSection);
@@ -458,7 +456,7 @@ public class DownloadView extends FrameLayout implements OnClickListener, Compou
      * @param aliyunDownloadMediaInfo
      */
     public void updateInfoByComplete(AliyunDownloadMediaInfo aliyunDownloadMediaInfo) {
-        if (aliyunDownloadMediaInfo.getStatus() == Status.Complete) {
+        if (aliyunDownloadMediaInfo.getStatus() == AliyunDownloadMediaInfo.Status.Complete) {
             removeDownloadingMeiaInfo(aliyunDownloadMediaInfo);
             addDownloadMediaInfo(aliyunDownloadMediaInfo);
         }
@@ -473,7 +471,7 @@ public class DownloadView extends FrameLayout implements OnClickListener, Compou
      * @param info
      */
     public void updateInfoByError(AliyunDownloadMediaInfo info) {
-        if (info.getStatus() == Status.Error) {
+        if (info.getStatus() == AliyunDownloadMediaInfo.Status.Error) {
             sectionAdapter.notifyDataSetChanged();
             showDownloadContentView();
         }

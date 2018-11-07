@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import com.alivc.player.VcPlayerLog;
-import com.aliyun.vodplayerview.view.interfaces.ViewAction;
-import com.aliyun.vodplayerview.widget.AliyunScreenMode;
+import com.github.qingmei2.view.interfaces.ViewAction;
+import com.github.qingmei2.widget.AliyunScreenMode;
 /*
  * Copyright (C) 2010-2018 Alibaba Group Holding Limited.
  */

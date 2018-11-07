@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.aliyun.vodplayer.R;
+import com.github.qingmei2.R;
 
 import java.util.ArrayList;
 

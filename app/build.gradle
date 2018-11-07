@@ -32,24 +32,20 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    // support
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation libs.support_v7
     implementation libs.recyclerview
     implementation libs.design
     implementation libs.constraint
     implementation libs.flexbox
-
     implementation libs.kotlin_stdlib
-
     implementation libs.dsl_viewpager
     implementation libs.dsl_viewpager_databinding
-
     kapt libs.arch_comp_room_compiler
     kapt libs.arch_comp_compiler
     kapt libs.glide_compiler
-
+    implementation libs.rhine_core
     testImplementation libs.junit
     androidTestImplementation libs.espresso_core
+    implementation project(':player')
 }
