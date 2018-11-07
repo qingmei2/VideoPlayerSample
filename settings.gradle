@@ -1,1 +1,1 @@
-include ':app', ':module_player'
+include ':app', ':module_player', ':module_core'
