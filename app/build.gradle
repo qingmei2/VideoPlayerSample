@@ -47,5 +47,5 @@ dependencies {
     implementation libs.rhine_core
     testImplementation libs.junit
     androidTestImplementation libs.espresso_core
-    implementation project(':player')
+    implementation project(':module_player')
 }
