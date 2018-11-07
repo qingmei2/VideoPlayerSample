@@ -101,7 +101,7 @@ ext {
             kodein_android           : [group: 'org.kodein.di', name: 'kodein-di-framework-android-core', version: versions.kodein],
             kodein_android_support   : [group: 'org.kodein.di', name: 'kodein-di-framework-android-support', version: versions.kodein],
 
-            rhine_core               : [group: 'com.github.qingmei2.rhine', name: 'rhine', version: '0.1.1'],
+            rhine_core               : [group: 'com.github.qingmei2.rhine', name: 'rhine', version: '0.1.4'],
 
             dsl_adapter              : [group: 'com.github.Yumenokanata.DslAdapter', name: 'dsladapter', version: versions.dsladapter],
             dsl_adapter_binding      : [group: 'com.github.Yumenokanata.DslAdapter', name: 'adapterdatabinding', version: versions.dsladapter],

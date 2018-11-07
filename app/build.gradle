@@ -46,61 +46,9 @@ dependencies {
     implementation libs.dsl_viewpager
     implementation libs.dsl_viewpager_databinding
 
-    implementation libs.rhine_core
-
-    // jetpack
-    implementation libs.arch_comp_extension
-
-    implementation libs.arch_comp_room
-    implementation libs.arch_comp_room_rxjava
     kapt libs.arch_comp_room_compiler
-
-    implementation libs.arch_comp_navigation
-    implementation libs.arch_comp_navigation_ui
     kapt libs.arch_comp_compiler
-
-    // retrofit
-    implementation libs.retrofit
-    implementation libs.retrofit_gson
-    implementation libs.retrofit_rxjava
-
-    // rx
-    implementation libs.rxkotlin
-    implementation libs.rxandroid
-    implementation libs.rxbinding
-    implementation libs.rxbinding_v7
-    implementation libs.rxpermissions
-    implementation libs.rxweaver
-
-    // autodispose
-    implementation libs.autodispose
-    implementation libs.autodispose_ktx
-    implementation libs.autodispose_archs_ktx
-
-    // kodein
-    implementation libs.kodein
-    implementation libs.kodein_android
-    implementation libs.kodein_android_support
-
-    // arrow
-    implementation libs.arrow
-
-    // okhttp
-    implementation libs.okhttp
-    implementation libs.okhttp_logging
-
-    // glide
-    implementation libs.glide
     kapt libs.glide_compiler
-
-    // logger
-    implementation libs.timber
-
-    // recyclerview_binding
-    implementation libs.dsl_adapter_binding, {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-    }
 
     testImplementation libs.junit
     androidTestImplementation libs.espresso_core
