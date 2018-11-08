@@ -20,7 +20,7 @@
             android:textColor="@android:color/white" />
 
         <EditText
-            android:id="@+id/vid"
+            android:id="@+id/etVid"
             style="@style/edit_line_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/akId"
+                android:id="@+id/etAkId"
                 style="@style/edit_line_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/akSecret"
+                android:id="@+id/etAkSecret"
                 style="@style/edit_line_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/scuToken"
+                android:id="@+id/etScuToken"
                 style="@style/edit_5line_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
